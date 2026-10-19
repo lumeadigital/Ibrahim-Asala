@@ -533,18 +533,58 @@
       filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
     }
 
-    /* الموقع والتقويم */
+    /* بطاقة الموقع والزر التفاعلي الجديد */
+    .location-interactive-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: rgba(85, 68, 54, 0.55);
+      border: 1.5px solid var(--card-border);
+      border-radius: 20px;
+      padding: 14px 22px;
+      margin-bottom: 24px;
+      transition: all 0.35s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .location-interactive-card:active {
+      transform: scale(0.97);
+      background: rgba(95, 76, 60, 0.75);
+    }
+
     .location-venue {
       font-size: 1.65rem;
       color: #ffffff;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .location-sub {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .location-click-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      color: #ffffff;
+      background: linear-gradient(135deg, #c7a982, #9b7952);
+      padding: 5px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .location-click-hint i {
+      font-size: 0.8rem;
     }
 
     .calendar-paper {
@@ -962,15 +1002,22 @@
         <div class="line right"></div>
       </div>
 
-      <!-- القسم 3: الموقع والتقويم والعداد (فندق حرير بلاس) -->
+      <!-- القسم 3: الموقع والتقويم والعداد (فندق حرير بالاس) -->
       <section class="section-card">
         <div class="section-badge-title">
           <i class="fa-solid fa-location-dot"></i>
           <span>الموقع والتاريخ</span>
         </div>
 
-        <div class="location-venue">فندق حرير بلاس</div>
-        <div class="location-sub">ضاحية الرشيد</div>
+        <!-- بطاقة الفندق القابلة للضغط مع رابط الخريطة الجديد -->
+        <a href="https://maps.app.goo.gl/By7nD9AehBzpQNmd8?g_st=iw" target="_blank" class="location-interactive-card">
+          <div class="location-venue">فندق حرير بالاس</div>
+          <div class="location-sub">ضاحية الرشيد</div>
+          <div class="location-click-hint">
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            <span>اضغط للوصول إلى الموقع عبر الخريطة</span>
+          </div>
+        </a>
 
         <div class="calendar-paper">
           <div class="cal-header">
@@ -1104,7 +1151,7 @@
 
     <!-- شريط الملاحة -->
     <nav class="glass-bottom-bar">
-      <a href="https://maps.app.goo.gl/8Szxav8EECMRyAHe8" target="_blank" class="bar-item">
+      <a href="https://maps.app.goo.gl/By7nD9AehBzpQNmd8?g_st=iw" target="_blank" class="bar-item">
         <i class="fa-solid fa-location-dot"></i>
         <span>الموقع</span>
       </a>
@@ -1384,7 +1431,7 @@
     updateCountdown();
 
     function addToCalendar() {
-      const icsData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:حفل زفاف إبراهيم & أصالة\nLOCATION:فندق حرير بلاس - ضاحية الرشيد\nDTSTART:20261104T160000Z\nDTEND:20261104T210000Z\nDESCRIPTION:حفل زفاف إبراهيم وأصالة\nEND:VEVENT\nEND:VCALENDAR`;
+      const icsData = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:حفل زفاف إبراهيم & أصالة\nLOCATION:فندق حرير بالاس - ضاحية الرشيد\nDTSTART:20261104T160000Z\nDTEND:20261104T210000Z\nDESCRIPTION:حفل زفاف إبراهيم وأصالة\nEND:VEVENT\nEND:VCALENDAR`;
       const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
